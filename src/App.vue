@@ -1,16 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <Jobs />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Jobs from "./components/jobs/Jobs.vue";
+import json from "../data.json";
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    Jobs,
+  },
+  data() {
+    console.log(json);
+    return {
+      myJson: json,
+    };
   },
 });
 </script>
