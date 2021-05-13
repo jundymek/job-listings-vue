@@ -1,5 +1,5 @@
 <template>
-  <div v-for="job in jobs" :key="job.id" class="box">
+  <div v-for="job in filteredJobs" :key="job.id" class="box">
     <div class="left">
       <img :src="require(`@/images/${job.logo}`)" alt="" class="logo" />
       <div class="content">
@@ -13,10 +13,15 @@
       </div>
     </div>
     <div class="right">
-      <span class="badge">{{ job.role }}</span>
+      <button class="badge" v-on:click="addSortElement(job.role)">
+        {{ job.role }}
+      </button>
       <span class="badge">{{ job.level }}</span>
       <span v-for="language in job.languages" :key="language" class="badge">{{
         language
+      }}</span>
+      <span v-for="tool in job.tools" :key="tool" class="badge">{{
+        tool
       }}</span>
     </div>
   </div>
@@ -24,11 +29,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import jobs from "../../../data.json";
+import { useFilterJobs } from "@/composables/useFilterJobs";
 
 export default defineComponent({
   setup() {
-    return { jobs };
+    const { filteredJobs, addSortElement, sortBy } = useFilterJobs();
+    console.log(filteredJobs.value);
+    console.log(sortBy.value);
+    return { filteredJobs, addSortElement };
   },
 });
 </script>
