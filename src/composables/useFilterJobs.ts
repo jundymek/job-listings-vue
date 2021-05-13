@@ -38,7 +38,7 @@ export const useFilterJobs = (): {
   };
 
   const removeSortElement = (item: string) => {
-    sortBy.value.filter((element) => element !== item);
+    sortBy.value = sortBy.value.filter((element) => element !== item);
   };
 
   const filteredJobs = computed(() => {

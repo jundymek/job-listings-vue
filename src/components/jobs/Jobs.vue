@@ -13,16 +13,26 @@
       </div>
     </div>
     <div class="right">
-      <button class="badge" v-on:click="addSortElement(job.role)">
+      <button class="badge" @click="addSortElement(job.role)">
         {{ job.role }}
       </button>
-      <span class="badge">{{ job.level }}</span>
-      <span v-for="language in job.languages" :key="language" class="badge">{{
-        language
+      <span class="badge" @click="addSortElement(job.level)">{{
+        job.level
       }}</span>
-      <span v-for="tool in job.tools" :key="tool" class="badge">{{
-        tool
-      }}</span>
+      <span
+        v-for="language in job.languages"
+        :key="language"
+        class="badge"
+        @click="addSortElement(language)"
+        >{{ language }}</span
+      >
+      <span
+        v-for="tool in job.tools"
+        :key="tool"
+        class="badge"
+        @click="addSortElement(tool)"
+        >{{ tool }}</span
+      >
     </div>
   </div>
 </template>

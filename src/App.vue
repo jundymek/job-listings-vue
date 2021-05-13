@@ -1,14 +1,17 @@
 <template>
+  <FilterOptions />
   <Jobs />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import Jobs from "./components/jobs/Jobs.vue";
+import FilterOptions from "./components/filterOptions/FilterOptions.vue";
 export default defineComponent({
   name: "App",
   components: {
     Jobs,
+    FilterOptions,
   },
 });
 </script>
