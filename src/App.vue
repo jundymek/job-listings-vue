@@ -24,8 +24,7 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background: $lightGrayishCyan;
-  margin-top: 60px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 body {

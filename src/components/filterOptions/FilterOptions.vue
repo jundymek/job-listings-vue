@@ -1,13 +1,15 @@
 <template>
-  <div v-if="sortBy.length" class="wrapper">
-    <button
-      class="button"
-      v-for="element in sortBy"
-      :key="element"
-      @click="removeSortElement(element)"
-    >
-      {{ element }}
-    </button>
+  <div class="background">
+    <div v-if="sortBy.length" class="wrapper">
+      <button
+        class="button"
+        v-for="element in sortBy"
+        :key="element"
+        @click="removeSortElement(element)"
+      >
+        {{ element }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -24,12 +26,29 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.background {
+  width: 100%;
+  height: 150px;
+  background-color: $desaturatedDarkCyan;
+  background-image: url("~@/images/bg-header-desktop.svg");
+  background-size: cover;
+  /* background-attachment: fixed;
+  background-position: center; */
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 .wrapper {
   width: 80%;
   background: #fff;
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .button {

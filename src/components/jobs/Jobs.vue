@@ -1,38 +1,40 @@
 <template>
-  <div v-for="job in filteredJobs" :key="job.id" class="box">
-    <div class="left">
-      <img :src="require(`@/images/${job.logo}`)" alt="" class="logo" />
-      <div class="content">
-        <h2 class="title">{{ job.company }}</h2>
-        <p>{{ job.position }}</p>
-        <div class="options">
-          <span>{{ job.postedAt }}</span>
-          <span>{{ job.contract }}</span>
-          <span>{{ job.location }}</span>
+  <div class="wrapper">
+    <div v-for="job in filteredJobs" :key="job.id" class="box">
+      <div class="left">
+        <img :src="require(`@/images/${job.logo}`)" alt="" class="logo" />
+        <div class="content">
+          <h2 class="title">{{ job.company }}</h2>
+          <p>{{ job.position }}</p>
+          <div class="options">
+            <span>{{ job.postedAt }}</span>
+            <span>{{ job.contract }}</span>
+            <span>{{ job.location }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="right">
-      <button class="badge" @click="addSortElement(job.role)">
-        {{ job.role }}
-      </button>
-      <span class="badge" @click="addSortElement(job.level)">{{
-        job.level
-      }}</span>
-      <span
-        v-for="language in job.languages"
-        :key="language"
-        class="badge"
-        @click="addSortElement(language)"
-        >{{ language }}</span
-      >
-      <span
-        v-for="tool in job.tools"
-        :key="tool"
-        class="badge"
-        @click="addSortElement(tool)"
-        >{{ tool }}</span
-      >
+      <div class="right">
+        <button class="badge" @click="addSortElement(job.role)">
+          {{ job.role }}
+        </button>
+        <span class="badge" @click="addSortElement(job.level)">{{
+          job.level
+        }}</span>
+        <span
+          v-for="language in job.languages"
+          :key="language"
+          class="badge"
+          @click="addSortElement(language)"
+          >{{ language }}</span
+        >
+        <span
+          v-for="tool in job.tools"
+          :key="tool"
+          class="badge"
+          @click="addSortElement(tool)"
+          >{{ tool }}</span
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -52,6 +54,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  margin-top: 80px;
+}
 .box {
   background: #fff;
   width: 80%;
