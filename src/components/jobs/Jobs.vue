@@ -5,7 +5,7 @@
         <img :src="require(`@/images/${job.logo}`)" alt="" class="logo" />
         <div class="content">
           <h2 class="title">{{ job.company }}</h2>
-          <p>{{ job.position }}</p>
+          <span class="position">{{ job.position }}</span>
           <div class="options">
             <span>{{ job.postedAt }}</span>
             <span>{{ job.contract }}</span>
@@ -90,12 +90,34 @@ export default defineComponent({
 }
 
 .title {
-  font-size: 15px;
+  font-size: 14px;
+  color: $desaturatedDarkCyan;
+}
+
+.position {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .options {
   display: flex;
   width: 100%;
+  margin: 10px 0 0 -10px;
+  font-size: 12px;
+  color: $darkGrayishCyan;
+
+  span {
+    padding: 0 10px;
+    position: relative;
+    &:not(:last-child)::after {
+      position: absolute;
+      content: "*";
+      font-size: 14px;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-20%);
+    }
+  }
 }
 
 .badge {
