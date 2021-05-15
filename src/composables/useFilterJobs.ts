@@ -25,6 +25,7 @@ export const useFilterJobs = (): {
   sortBy: Ref<string[]>;
   addSortElement: (item: string) => void;
   removeSortElement: (item: string) => void;
+  removeAllSortElements: () => void;
   filteredJobs: ComputedRef<Job[]>;
 } => {
   const addSortElement = (item: string) => {
@@ -41,6 +42,10 @@ export const useFilterJobs = (): {
     sortBy.value = sortBy.value.filter((element) => element !== item);
   };
 
+  const removeAllSortElements = () => {
+    sortBy.value = [];
+  };
+
   const filteredJobs = computed(() => {
     return allJobs.value.filter((job) => {
       const filterOptions = job.languages.concat(
@@ -53,5 +58,11 @@ export const useFilterJobs = (): {
     });
   });
 
-  return { sortBy, addSortElement, removeSortElement, filteredJobs };
+  return {
+    sortBy,
+    addSortElement,
+    removeSortElement,
+    filteredJobs,
+    removeAllSortElements,
+  };
 };
