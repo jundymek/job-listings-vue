@@ -7,7 +7,11 @@
       :class="{ isFeatured: job.featured }"
     >
       <div class="left">
-        <img :src="require(`@/images/${job.logo}`)" alt="" class="logo" />
+        <img
+          :src="require(`@/images/${job.logo}`)"
+          :alt="job.company + ' logo'"
+          class="logo"
+        />
         <div class="content">
           <div class="title-wrapper">
             <h2 class="title">{{ job.company }}</h2>
@@ -28,23 +32,25 @@
         <button class="badge" @click="addSortElement(job.role)">
           {{ job.role }}
         </button>
-        <span class="badge" @click="addSortElement(job.level)">{{
-          job.level
-        }}</span>
-        <span
+        <button class="badge" @click="addSortElement(job.level)">
+          {{ job.level }}
+        </button>
+        <button
           v-for="language in job.languages"
           :key="language"
           class="badge"
           @click="addSortElement(language)"
-          >{{ language }}</span
         >
-        <span
+          {{ language }}
+        </button>
+        <button
           v-for="tool in job.tools"
           :key="tool"
           class="badge"
           @click="addSortElement(tool)"
-          >{{ tool }}</span
         >
+          {{ tool }}
+        </button>
       </div>
     </div>
   </div>
@@ -58,9 +64,7 @@ import Badge from "./Badge.vue";
 export default defineComponent({
   components: { Badge },
   setup() {
-    const { filteredJobs, addSortElement, sortBy } = useFilterJobs();
-    console.log(filteredJobs.value);
-    console.log(sortBy.value);
+    const { filteredJobs, addSortElement } = useFilterJobs();
     return { filteredJobs, addSortElement };
   },
 });
@@ -68,7 +72,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .wrapper {
-  margin-top: 80px;
+  margin: 80px 0;
+  @media (max-width: $desktop) {
+    margin: 46px 0;
+  }
 }
 .box {
   background: #fff;
@@ -133,11 +140,11 @@ export default defineComponent({
   width: 86px;
   height: 86px;
   @media (max-width: $desktop) {
-    width: 66px;
-    height: 66px;
+    width: 46px;
+    height: 46px;
     position: absolute;
     top: 0;
-    left: 30px;
+    left: 20px;
     transform: translateY(-50%);
   }
 }
@@ -208,11 +215,12 @@ export default defineComponent({
 
 .badge {
   margin: 0 10px;
-  padding: 8px 10px 6px 10px;
+  padding: 8px 8px 6px 8px;
   background: $lightGrayishCyan;
   border: 0;
   cursor: pointer;
   border-radius: 4px;
+  font-family: "Spartan", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: $desaturatedDarkCyan;

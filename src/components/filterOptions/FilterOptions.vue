@@ -1,18 +1,17 @@
 <template>
-  <div class="background">
-    <div v-if="sortBy.length" class="wrapper">
-      <div class="sort-btn-wrapper">
-        <button
-          class="button"
-          v-for="element in sortBy"
-          :key="element"
-          @click="removeSortElement(element)"
-        >
-          {{ element }}
-        </button>
-      </div>
-      <button class="btn-clear" @click="removeAllSortElements()">Clear</button>
+  <div class="background"></div>
+  <div v-if="sortBy.length" class="wrapper">
+    <div class="sort-btn-wrapper">
+      <button
+        class="button"
+        v-for="element in sortBy"
+        :key="element"
+        @click="removeSortElement(element)"
+      >
+        {{ element }}
+      </button>
     </div>
+    <button class="btn-clear" @click="removeAllSortElements()">Clear</button>
   </div>
 </template>
 
@@ -37,9 +36,7 @@ export default defineComponent({
   background-image: url("~@/images/bg-header-desktop.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
-  display: flex;
-  align-items: center;
+  z-index: 0;
 }
 .wrapper {
   width: 80%;
@@ -47,24 +44,25 @@ export default defineComponent({
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  bottom: -40px;
   box-sizing: border-box;
-  left: 50%;
   padding: 10px;
-  transform: translateX(-50%);
+  margin-top: -40px;
   border-radius: 4px;
   box-shadow: 0px 6px 35px -18px hsl(180, 29%, 50%);
+  @media (max-width: $desktop) {
+    width: 90%;
+  }
 }
 
 .sort-btn-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .button {
   border: 0;
-  padding: 10px 45px 10px 10px;
-  margin: 10px 10px;
+  padding: 8px 45px 8px 10px;
+  margin: 10px 8px;
   position: relative;
   color: $desaturatedDarkCyan;
   background-color: $lightGrayishCyanFilter;
@@ -96,13 +94,17 @@ export default defineComponent({
 .btn-clear {
   border: none;
   background: none;
-  color: $desaturatedDarkCyan;
-  font-size: 16px;
+  color: $darkGrayishCyan;
+  font-size: 14px;
   font-weight: 600;
   padding: 0 36px;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
+    color: $desaturatedDarkCyan;
+  }
+  @media (max-width: $desktop) {
+    padding: 0 14px;
   }
 }
 </style>
