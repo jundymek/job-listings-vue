@@ -11,8 +11,10 @@
         <div class="content">
           <div class="title-wrapper">
             <h2 class="title">{{ job.company }}</h2>
-            <Badge type="new" v-if="job.new" />
-            <Badge type="featured" v-if="job.featured" />
+            <div class="badge-wrapper">
+              <Badge type="new" v-if="job.new" />
+              <Badge type="featured" v-if="job.featured" />
+            </div>
           </div>
           <span class="position">{{ job.position }}</span>
           <div class="options">
@@ -79,6 +81,13 @@ export default defineComponent({
   border-radius: 4px;
   position: relative;
   box-shadow: 0px 6px 35px -18px hsl(180, 29%, 50%);
+  @media (max-width: $desktop) {
+    width: 90%;
+    padding: 40px 20px;
+    margin: 60px auto;
+    height: auto;
+    flex-direction: column;
+  }
 
   &.isFeatured::before {
     position: absolute;
@@ -98,15 +107,39 @@ export default defineComponent({
   display: flex;
   padding: 10px 10px;
   align-items: center;
+  @media (max-width: $desktop) {
+    width: 100%;
+    padding: 10px 0px;
+  }
+}
+
+.left {
+  @media (max-width: $desktop) {
+    flex-direction: column;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $darkGrayishCyan;
+  }
 }
 
 .right {
   justify-content: flex-end;
+  @media (max-width: $desktop) {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
 
 .logo {
   width: 86px;
   height: 86px;
+  @media (max-width: $desktop) {
+    width: 66px;
+    height: 66px;
+    position: absolute;
+    top: 0;
+    left: 30px;
+    transform: translateY(-50%);
+  }
 }
 
 .content {
@@ -115,6 +148,9 @@ export default defineComponent({
   align-items: flex-start;
   width: 100%;
   margin-left: 20px;
+  @media (max-width: $desktop) {
+    margin-left: 0px;
+  }
 }
 
 .title-wrapper {
@@ -139,6 +175,9 @@ export default defineComponent({
   &:hover {
     color: $desaturatedDarkCyan;
   }
+  @media (max-width: $desktop) {
+    font-size: 16px;
+  }
 }
 
 .options {
@@ -162,20 +201,28 @@ export default defineComponent({
   }
 }
 
+.badge-wrapper {
+  display: flex;
+  margin-left: 14px;
+}
+
 .badge {
   margin: 0 10px;
-  padding: 6px 10px;
+  padding: 8px 10px 6px 10px;
   background: $lightGrayishCyan;
   border: 0;
   cursor: pointer;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: $desaturatedDarkCyan;
   transition: 0.1s;
   &:hover {
     background: $desaturatedDarkCyan;
     color: #fff;
+  }
+  @media (max-width: $desktop) {
+    margin: 10px 10px 10px 0;
   }
 }
 </style>

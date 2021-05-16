@@ -32,14 +32,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 .badge2 {
   color: white;
-  margin: 0 10px;
+  margin: 0 4px;
   display: flex;
   justify-content: center;
   font-family: auto;
   align-items: center;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 4px 8px;
+  padding: 6px 8px 4px 8px;
   border-radius: 14px;
 }
 </style>
