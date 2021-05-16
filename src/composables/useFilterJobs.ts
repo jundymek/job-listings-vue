@@ -29,12 +29,10 @@ export const useFilterJobs = (): {
   filteredJobs: ComputedRef<Job[]>;
 } => {
   const addSortElement = (item: string) => {
-    console.log("updated");
     if (sortBy.value.includes(item)) {
       return;
     } else {
       sortBy.value.push(item);
-      console.log(sortBy.value);
     }
   };
 
@@ -53,7 +51,6 @@ export const useFilterJobs = (): {
         job.role,
         job.level
       );
-      console.log(filterOptions);
       return sortBy.value.every((item) => filterOptions.includes(item));
     });
   });
