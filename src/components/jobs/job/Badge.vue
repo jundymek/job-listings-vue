@@ -1,5 +1,5 @@
 <template>
-  <span class="badge2" :style="badgeStyles">
+  <span class="badge" :style="badgeStyles">
     {{ text }}
   </span>
 </template>
@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.badge2 {
+.badge {
   color: white;
   margin: 0 4px;
   display: flex;

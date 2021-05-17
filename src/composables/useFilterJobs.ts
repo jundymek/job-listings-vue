@@ -2,7 +2,7 @@ import { ComputedRef, Ref, ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
 import jobs from "../../data.json";
 
-interface Job {
+export interface JobType {
   id: number;
   company: string;
   logo: string;
@@ -19,14 +19,14 @@ interface Job {
 }
 
 const sortBy = ref<string[]>([]);
-const allJobs = ref<Job[]>(jobs);
+const allJobs = ref<JobType[]>(jobs);
 
 export const useFilterJobs = (): {
   sortBy: Ref<string[]>;
   addSortElement: (item: string) => void;
   removeSortElement: (item: string) => void;
   removeAllSortElements: () => void;
-  filteredJobs: ComputedRef<Job[]>;
+  filteredJobs: ComputedRef<JobType[]>;
 } => {
   const addSortElement = (item: string) => {
     if (sortBy.value.includes(item)) {
