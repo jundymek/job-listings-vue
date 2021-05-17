@@ -1,4 +1,5 @@
 <template>
+  <h1 class="sr-only">Job listings with filtering</h1>
   <FilterOptions />
   <Jobs />
 </template>
@@ -27,8 +28,22 @@ export default defineComponent({
   min-height: 100vh;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: $lightGrayishCyan;
   margin: 0;
+}
+
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 </style>

@@ -44,7 +44,6 @@ export default defineComponent({
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
   padding: 10px;
   margin-top: -40px;
   border-radius: 4px;

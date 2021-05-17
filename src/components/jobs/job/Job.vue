@@ -1,5 +1,5 @@
 <template>
-  <div class="box" :class="{ isFeatured: job.featured }">
+  <section class="box" :class="{ isFeatured: job.featured }">
     <div class="wrapper">
       <img
         :src="require(`@/images/${job.logo}`)"
@@ -23,7 +23,7 @@
       </div>
     </div>
     <SortOptions :job="job" />
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -49,7 +49,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .box {
   background: #fff;
-  box-sizing: border-box;
   width: 80%;
   height: 154px;
   margin: 20px auto;
