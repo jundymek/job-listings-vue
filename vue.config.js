@@ -1,5 +1,6 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/ip-tracker-vue/" : "/",
+  publicPath:
+    process.env.NODE_ENV === "production" ? "/job-listings-vue/" : "/",
   css: {
     loaderOptions: {
       sass: {
