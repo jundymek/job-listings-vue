@@ -1,18 +1,20 @@
 <template>
   <div class="background"></div>
-  <div v-if="sortBy.length" class="wrapper">
-    <div class="sort-btn-wrapper">
-      <button
-        class="button"
-        v-for="element in sortBy"
-        :key="element"
-        @click="removeSortElement(element)"
-      >
-        {{ element }}
-      </button>
+  <transition name="slide-fade"
+    ><div v-if="sortBy.length" class="wrapper">
+      <div class="sort-btn-wrapper">
+        <button
+          class="button"
+          v-for="element in sortBy"
+          :key="element"
+          @click="removeSortElement(element)"
+        >
+          {{ element }}
+        </button>
+      </div>
+      <button class="btn-clear" @click="removeAllSortElements()">Clear</button>
     </div>
-    <button class="btn-clear" @click="removeAllSortElements()">Clear</button>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -37,6 +39,9 @@ export default defineComponent({
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 0;
+  @media (max-width: $desktop) {
+    background-image: url("~@/images/bg-header-mobile.svg");
+  }
 }
 .wrapper {
   width: 80%;

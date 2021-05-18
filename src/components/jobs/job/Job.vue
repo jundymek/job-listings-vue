@@ -56,6 +56,7 @@ export default defineComponent({
   display: flex;
   border-radius: 4px;
   position: relative;
+  transition: all 1s;
   box-shadow: 0px 6px 35px -18px hsl(180, 29%, 50%);
   @media (max-width: $desktop) {
     width: 90%;

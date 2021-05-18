@@ -35,6 +35,7 @@ export default defineComponent({
 body {
   background: $lightGrayishCyan;
   margin: 0;
+  overflow-y: scroll;
 }
 
 .sr-only {
@@ -45,5 +46,24 @@ body {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.slide-fade-enter-from {
+  transform: translateY(-50px);
+}
+.slide-fade-enter-active {
+  transition: all 1s ease;
+}
+.slide-fade-leave-active {
+  transition: all 1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+.slide-fade-move
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transition: transform 1s;
 }
 </style>

@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
-    <div v-for="job in filteredJobs" :key="job.id">
-      <Job :job="job" />
-    </div>
+    <transition-group name="list" tag="div">
+      <div v-for="job in filteredJobs" :key="job.id">
+        <Job :job="job" />
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -26,5 +28,22 @@ export default defineComponent({
   @media (max-width: $desktop) {
     margin: 46px 0;
   }
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter-from /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.list-move {
+  transition: transform 0.2s;
 }
 </style>
